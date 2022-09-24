@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace NutriApp.Models
+namespace NutriApp.Models.EF
 {
     public class NutriDbContext : DbContext
     {

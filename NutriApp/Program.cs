@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using NutriApp.Models;
+using NutriApp.Models.EF;
+using NutriApp.WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<NutriDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("NutriDbConnectionString")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+var api = new SpoonApiCaller();
+api.GetProductsByName("banana");
 
 var app = builder.Build();
 
