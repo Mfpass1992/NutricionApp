@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using NutriApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<NutriDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NutriDbConnectionString")));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
