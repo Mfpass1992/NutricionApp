@@ -8,7 +8,7 @@ namespace NutriApp.WebAPI
     {
         private static readonly HttpClient client = new HttpClient();
 
-        public async Task GetProductsByName(string name)
+        public async Task<List<ProductSelectionItem>> GetProductsByName(string name)
         {
            //TODO: Secure apiKey
            var response = await client.GetAsync("https://api.spoonacular.com/food/ingredients/search?" +
@@ -26,10 +26,10 @@ namespace NutriApp.WebAPI
                 products.Add(product);
             }
 
-            products.ToList();
+            return products.ToList();
         }
 
-        public async Task GetProductInfoById(int id)
+        public async Task<ProductInformation> GetProductInfoById(int id)
         {
             //GET https://api.spoonacular.com/food/ingredients/9266/information?amount=1
             var response = await client.GetAsync("https://api.spoonacular.com/food/ingredients/" + id
@@ -54,7 +54,7 @@ namespace NutriApp.WebAPI
                 productInfo.Nutrition.Add(nutrition);
             }
 
-            Console.WriteLine(productInfo);
+            return productInfo;
         }
     }
 }
