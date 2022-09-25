@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bB4GXXOi2N40+Sc+xKi3pTEQ2frijMgSKNrDdWJ/RmGzf6zvGQx4ePgML52OTSkeyY6IcMV2sXoiN/YsmizwKw==",
+  "dgSpecHash": "K8jjTOPjjSn3h4A3jMbAIX4lb3T5yZuGrnhbp64FPZrvD4ndixYvDUWQFJXzL1a2lhNEDeX7w+9GjJYLhWSO9w==",
   "success": true,
   "projectFilePath": "D:\\git\\NutriApp\\NutriApp\\NutriApp.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "C:\\Users\\BBB\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\BBB\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\BBB\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\BBB\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\BBB\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\BBB\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\BBB\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

@@ -12,7 +12,8 @@ builder.Services.AddDbContext<NutriDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var api = new SpoonApiCaller();
-api.GetProductsByName("banana");
+//api.GetProductsByName("banana");
+api.GetProductInfoById(9266);
 
 var app = builder.Build();
 
