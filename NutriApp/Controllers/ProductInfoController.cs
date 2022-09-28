@@ -13,6 +13,7 @@ namespace NutriApp.Controllers
             _spoonApiCaller = spoonApiCaller;
         }
 
+
         public IActionResult Index(string? name)
         {
             ViewData["ProductSelectionList"] = new List<ProductSelectionItem>();
@@ -36,7 +37,6 @@ namespace NutriApp.Controllers
             {
                 // TODO
             }
-
             return Json(product);
         }
     }

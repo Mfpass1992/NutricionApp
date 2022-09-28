@@ -1,5 +1,7 @@
 ﻿@using NutriApp.Models.SpoonModels
 @using NutriApp.Controllers
+@using NutriApp.Helpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model List<ProductSelectionItem>
 @{
 }
@@ -33,6 +35,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 <script type="text/javascript">
 
+var assetStatusEnum = @(Html.EnumToString<Units>())
+
 $(".selectionItems").click(function() {
     CallController((this));
 });
@@ -41,9 +45,12 @@ function CallController(el) {
     $.ajax({
         type: "GET",
         url: "/ProductInfo/GetProductInformation",
-        data: { "productId": (this).dataset.productid },
+        data: { "productId": el.dataset.productid },
         success: function(data) {
             console.log(data);
+            var Nutritions = data.nutrition;
+            console.log(Nutritions);
+            console.log(data.unit);
         },
         error: function(xhr, ajaxOptions, thrownError) {
             console.log("erro");

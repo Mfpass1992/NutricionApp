@@ -61,3 +61,10 @@ D:\git\NutriApp\NutriApp\obj\Debug\net6.0\ref\NutriApp.dll
 D:\git\NutriApp\NutriApp\bin\Debug\net6.0\Humanizer.dll
 D:\git\NutriApp\NutriApp\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\git\NutriApp\NutriApp\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\git\NutriApp\NutriApp\bin\Debug\net6.0\System.Web.Mvc.dll
+D:\git\NutriApp\NutriApp\bin\Debug\net6.0\System.Web.Razor.dll
+D:\git\NutriApp\NutriApp\bin\Debug\net6.0\System.Web.Helpers.dll
+D:\git\NutriApp\NutriApp\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+D:\git\NutriApp\NutriApp\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+D:\git\NutriApp\NutriApp\bin\Debug\net6.0\System.Web.WebPages.dll
+D:\git\NutriApp\NutriApp\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
