@@ -1,4 +1,5 @@
 ﻿@using NutriApp.Models.SpoonModels
+@using NutriApp.Controllers
 @model List<ProductSelectionItem>
 @{
 }
@@ -19,12 +20,38 @@
       <ul>
         @foreach (var item in (List<ProductSelectionItem>) ViewData["ProductSelectionList"])
         {
-            <li>
+            <li data-productId=@item.Id class="selectionItems">
                 @item.Name
             </li>
         }
       </ul>
     </div>
   </div>
-  <div class="col-md-auto">asd</div>
+  <div class="col-md-auto"></div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(".selectionItems").click(function() {
+    CallController((this));
+});
+
+function CallController(el) {
+    $.ajax({
+        type: "GET",
+        url: "/ProductInfo/GetProductInformation",
+        data: { "productId": (this).dataset.productid },
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            console.log("erro");
+        },
+        complete: function(data) {
+            console.log("succes");
+        }
+    });
+};
+
+</script>

@@ -28,9 +28,9 @@ namespace NutriApp.Controllers
 
 
         [HttpGet]
-        public JsonResult GetProductInformation(int id)
+        public JsonResult GetProductInformation(int productId)
         {
-            ProductInformation product = _spoonApiCaller.GetProductInfoById(id).Result;
+            ProductInformation product = _spoonApiCaller.GetProductInfoById(productId).Result;
 
             if (product == null)
             {
