@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DSiaDB/Ate6KUz7u8/XceY+7pzRnNYPt7lGBUvWp34w=",
+  "Hash": "Kg3+LzuLJ1iPsT6jC22PpnsDkcTQ8+oBqGUICV6LbyI=",
   "Source": "NutriApp",
   "BasePath": "_content/NutriApp",
   "Mode": "Default",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "D:\\git\\NutriApp\\NutriApp\\obj\\Debug\\net6.0\\scopedcss\\bundle\\NutriApp.styles.css",
-      "SourceId": "NutriApp",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\git\\NutriApp\\NutriApp\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/NutriApp",
-      "RelativePath": "NutriApp.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\git\\NutriApp\\NutriApp\\obj\\Debug\\net6.0\\scopedcss\\bundle\\NutriApp.styles.css"
-    },
-    {
-      "Identity": "D:\\git\\NutriApp\\NutriApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\NutriApp.bundle.scp.css",
-      "SourceId": "NutriApp",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\git\\NutriApp\\NutriApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/NutriApp",
-      "RelativePath": "NutriApp.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\git\\NutriApp\\NutriApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\NutriApp.bundle.scp.css"
-    },
     {
       "Identity": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\css\\site.css",
       "SourceId": "NutriApp",
@@ -83,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\img\\logo.png",
+      "SourceId": "NutriApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\",
+      "BasePath": "_content/NutriApp",
+      "RelativePath": "img/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logo.png"
     },
     {
       "Identity": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\js\\site.js",

@@ -49,9 +49,7 @@ D:\git\NutriApp\NutriApp\obj\Debug\net6.0\NutriApp.RazorAssemblyInfo.cache
 D:\git\NutriApp\NutriApp\obj\Debug\net6.0\NutriApp.RazorAssemblyInfo.cs
 D:\git\NutriApp\NutriApp\obj\Debug\net6.0\staticwebassets.build.json
 D:\git\NutriApp\NutriApp\obj\Debug\net6.0\staticwebassets.development.json
-D:\git\NutriApp\NutriApp\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\git\NutriApp\NutriApp\obj\Debug\net6.0\scopedcss\bundle\NutriApp.styles.css
-D:\git\NutriApp\NutriApp\obj\Debug\net6.0\scopedcss\projectbundle\NutriApp.bundle.scp.css
 D:\git\NutriApp\NutriApp\obj\Debug\net6.0\NutriApp.csproj.CopyComplete
 D:\git\NutriApp\NutriApp\obj\Debug\net6.0\NutriApp.dll
 D:\git\NutriApp\NutriApp\obj\Debug\net6.0\refint\NutriApp.dll
