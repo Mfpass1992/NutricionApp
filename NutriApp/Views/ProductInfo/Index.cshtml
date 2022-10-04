@@ -5,46 +5,46 @@
 @model List<ProductSelectionItem>
 @{
 }
+<head>
+    <link rel="stylesheet" href="~/css/productInfo.css" asp-append-version="true" />
+</head>
 
-<div class="text-center">
-    <h1>ProductInfo Index Page</h1>
+<div>
+    <h1>Product Info</h1>
 </div>
-<div class="container">
-  <div class="row justify-content-center p-3">
-    <div class="col-auto">
-      <form asp-controller="ProductInfo" asp-action="Index">
-          <label for="Name">Wyszukaj produkt</label>
-          <input name="Name" placeholder="Wyszukaj" />
-          <input type="submit" />
-      </form>
+<div class="container-md">
+    <div class="queryContainer"> 
+        <div class="searchContainer">
+          <form asp-controller="ProductInfo" asp-action="Index">
+              <input name="Name" placeholder="Search for product" />
+              <button type="submit">Search</button>
+          </form>
+        </div>
+        <div class="resultContainer">
+          <ul>
+            @foreach (var item in (List<ProductSelectionItem>) ViewData["ProductSelectionList"])
+            {
+                <li data-productId=@item.Id class="selectionItems">
+                    @item.Name
+                </li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="resultProductContainer" id="productContainer">
+          <table id="productInfoTable" border="0">
+              <thead>
+                  <tr>
+                    <th class="nutrient_th"></th>
+                    <th class="weight_th"></th>
+                    <th class="percentDaily_th"></th>
+                  </tr>
+              </thead>
+              <tbody id="table_body">
+              </tbody>
+          </table>
     </div>
-    <div class="col-auto">
-      <ul>
-        @foreach (var item in (List<ProductSelectionItem>) ViewData["ProductSelectionList"])
-        {
-            <li data-productId=@item.Id class="selectionItems">
-                @item.Name
-            </li>
-        }
-      </ul>
-    </div>
-  </div>
-  <div class="col-md-auto" id="productContainer">
-      <table id="productInfoTable" border="0">
-          <thead>
-              <tr>
-                <th class="nutrient_th"></th>
-                <th class="weight_th"></th>
-                <th class="percentDaily_th"></th>
-              </tr>
-          </thead>
-          <tbody id="table_body">
-          </tbody>
-      </table>
-
-  </div>
 </div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -56,43 +56,54 @@ function getUnit(id) {
     }
 }
 
+function clearTable()
+{
+    $("#productContainer").empty();
+    $("#productContainer").append("<table id='productInfoTable' />");
+    $("#productInfoTable").append('<thead> <tr> <th class="nutrient_th"></th> <th class="weight_th"></th> <th class="percentDaily_th"></th> </tr> </thead><tbody id="table_body"> </tbody>');
+};
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+   
 var assetStatusEnum = @(Html.EnumToString<Units>());
     console.log(assetStatusEnum);
 
-$(".selectionItems").click(function() {
-    CallController((this));
+    $(".selectionItems").click(function() {
+        CallController((this));
 });
 
-function CallController(el) {
-    $.ajax({
-        type: "GET",
-        url: "/ProductInfo/GetProductInformation",
-        data: { "productId": el.dataset.productid },
-        dataType: "json",
-        success: function(data) {
-            console.log(data);
-            var Nutritions = data.nutrition;
-            console.log(Nutritions);
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-            console.log("erro");
-        },
-        complete: function(data) {
-            var response = data.responseJSON;
-            $("#productContainer").prepend("<h1>" + response.name + "<h1>");
-            $(".nutrient_th").append("Nutrient");
-            $(".percentDaily_th").append("Percent of daily recommended intake");
-            $(".weight_th").append(response.amount + getUnit(response.unit));
-            for (var el in response.nutrition) {
-                var nutri = response.nutrition[el];
-                $("#table_body").append("<tr>");
-                $("#table_body").append("<td class=nutri-label>" + nutri.name + "</td>");
-                $("#table_body").append("<td>" + nutri.amount + getUnit(nutri.unit) + "</td>");
-                $("#table_body").append("<td>" + nutri.percentOfDailyNeeds + "</td>");
-                $("#table_body").append("</tr>");
-            }
-        }
-    });
+        function CallController(el) {
+            $.ajax({
+                type: "GET",
+                url: "/ProductInfo/GetProductInformation",
+                data: { "productId": el.dataset.productid },
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    var Nutritions = data.nutrition;
+                    console.log(Nutritions);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log("erro");
+                },
+                complete: function (data) {
+                    var response = data.responseJSON;
+                    clearTable();
+                    $(".nutrient_th").append("Nutrient");
+                    $(".percentDaily_th").append("Percent of daily recommended intake");
+                    $(".weight_th").append(response.amount + getUnit(response.unit));
+                    for (var el in response.nutrition) {
+                        var nutri = response.nutrition[el];
+                        $("#table_body").append("<tr>");
+                        $("#table_body").append("<td class=nutri-label>" + nutri.name + "</td>");
+                        $("#table_body").append("<td>" + nutri.amount + getUnit(nutri.unit) + "</td>");
+                        $("#table_body").append("<td>" + nutri.percentOfDailyNeeds + "</td>");
+                        $("#table_body").append("</tr>");
+                    }
+                }
+            });
 };
 
 </script>
