@@ -48,18 +48,23 @@
     cursor: pointer;
 }
 
-.resultContainer {
+.resultContainer:empty {
+    width: 35%;
+    height: 30%;
+    margin: 10px 0px;
+}
+
+.resultContainer:not(:empty) {
     width: 35%;
     height: 30%;
     margin: 10px 0px;
     border: 2px solid #2ac28a;
-
     border-radius: 5px 5px 0px 0px;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
 
-.resultContainer ul{
+.resultContainer ul {
     margin: 2px;
     padding: 0px 10px;
 }
@@ -101,22 +106,7 @@
     margin: 0px 10px;
 }
 
-#productInfoTable{
-    border-collapse: collapse;
-    padding: 25px 0;
-    font-size: 0.9em;
-    min-width: 400px;
-    border-radius: 5px 5px 0px 0px; 
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0,0,0,0.15);
-}
 
-#productInfoTable thead tr {
-    background-color: #2ac28a;
-    color: #fff;
-    text-align: left;
-    font-weight: bold;
-}
 
 #productInfoTable th,
 #productInfoTable td{

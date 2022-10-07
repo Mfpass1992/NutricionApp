@@ -4,6 +4,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model List<ProductSelectionItem>
 @{
+
 }
 <head>
     <link rel="stylesheet" href="~/css/productInfo.css" asp-append-version="true" />
@@ -20,33 +21,62 @@
               <button type="submit">Search</button>
           </form>
         </div>
-        <div class="resultContainer">
-          <ul>
-            @foreach (var item in (List<ProductSelectionItem>) ViewData["ProductSelectionList"])
-            {
-                <li data-productId=@item.Id class="selectionItems">
-                    @item.Name
-                </li>
-            }
-          </ul>
-        </div>
-      </div>
-      <div class="resultProductContainer" id="productContainer">
-          <table id="productInfoTable" border="0">
-              <thead>
-                  <tr>
-                    <th class="nutrient_th"></th>
-                    <th class="weight_th"></th>
-                    <th class="percentDaily_th"></th>
-                  </tr>
-              </thead>
-              <tbody id="table_body">
-              </tbody>
-          </table>
+        @if (ViewData["ProductSelectionList"] != null)
+        {
+            <div class="resultContainer">
+                <ul>
+                    @foreach (var item in (List<ProductSelectionItem>) ViewData["ProductSelectionList"])
+                    {
+                        <li data-productId=@item.Id class="selectionItems">
+                            @item.Name
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        <div class="resultContainer"></div>
     </div>
+    <div class="resultProductContainer" id="productContainer" />
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 <script type="text/javascript">
+
+var styleS = `
+    .resultContainer {
+        border: 2px solid #2ac28a;
+        border-radius: 5px 5px 0px 0px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    }`;
+
+
+var stylePt = `
+    #productInfoTable{
+        border-collapse: collapse;
+        padding: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        border-radius: 5px 5px 0px 0px; 
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    }
+
+    #productInfoTable thead tr {
+        background-color: #2ac28a;
+        color: #fff;
+        text-align: left;
+        font-weight: bold;
+    }`;
+
+var style = document.createElement('style');
+style.innerHTML = styleS;
+
+var styleP = document.createElement('style');
+styleP.innerHTML = stylePt;
+
+function showTable() {
+    document.head.appendChild(style);
+}
 
 function getUnit(id) {
     for (var i in assetStatusEnum) {
@@ -74,36 +104,37 @@ var assetStatusEnum = @(Html.EnumToString<Units>());
         CallController((this));
 });
 
-        function CallController(el) {
-            $.ajax({
-                type: "GET",
-                url: "/ProductInfo/GetProductInformation",
-                data: { "productId": el.dataset.productid },
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    var Nutritions = data.nutrition;
-                    console.log(Nutritions);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    console.log("erro");
-                },
-                complete: function (data) {
-                    var response = data.responseJSON;
-                    clearTable();
-                    $(".nutrient_th").append("Nutrient");
-                    $(".percentDaily_th").append("Percent of daily recommended intake");
-                    $(".weight_th").append(response.amount + getUnit(response.unit));
-                    for (var el in response.nutrition) {
-                        var nutri = response.nutrition[el];
-                        $("#table_body").append("<tr>");
-                        $("#table_body").append("<td class=nutri-label>" + nutri.name + "</td>");
-                        $("#table_body").append("<td>" + nutri.amount + getUnit(nutri.unit) + "</td>");
-                        $("#table_body").append("<td>" + nutri.percentOfDailyNeeds + "</td>");
-                        $("#table_body").append("</tr>");
-                    }
-                }
-            });
+function CallController(el) {
+    $.ajax({
+        type: "GET",
+        url: "/ProductInfo/GetProductInformation",
+        data: { "productId": el.dataset.productid },
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            var Nutritions = data.nutrition;
+            console.log(Nutritions);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log("erro");
+        },
+        complete: function (data) {
+            var response = data.responseJSON;
+            clearTable();
+            $(".nutrient_th").append("Nutrient");
+            $(".percentDaily_th").append("Percent of daily recommended intake");
+            $(".weight_th").append(response.amount + getUnit(response.unit));
+            for (var el in response.nutrition) {
+                var nutri = response.nutrition[el];
+                $("#table_body").append("<tr>");
+                $("#table_body").append("<td class=nutri-label>" + nutri.name + "</td>");
+                $("#table_body").append("<td>" + nutri.amount + getUnit(nutri.unit) + "</td>");
+                $("#table_body").append("<td>" + nutri.percentOfDailyNeeds + "</td>");
+                $("#table_body").append("</tr>");
+            }
+            document.head.appendChild(styleP);
+        }
+    });
 };
 
 </script>
