@@ -1,0 +1,141 @@
+﻿@using NutriApp.Controllers
+@model NutriApp.Models.BMIEntry
+@{
+    
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/BMI.css" asp-append-version="true" />
+</head>
+
+<h1>Bmi page</h1>
+<div class="wrapper">
+    <div class="form_container">
+        <form method="GET" asp-controller="BMI" asp-action="Index">
+            <label for="height">Height</label>
+            <input type="number" id="height" name="height" placeholder="Your height ..." /> <br />
+
+            <label for="weight">Weight</label>
+            <input type="number" id="weight" name="weight" placeholder="Your weight ..." /> <br />
+
+            <input type="submit" value="Calculate" />
+        </form>
+    </div>
+    @if(Model != null)
+    {
+    <div class="result_text">
+        Your BMI equals: @Model.BMI (@BMIController.GetWeightCategory(@Model.BMI))<br>
+        <ul>
+            <li>Healty BMI range: 18.5 - 25 kg/m&sup2;</li>
+            <li>Healthy weight for your hight: @BMIController.GetLowRangeForHeight(@Model.Height) - @BMIController.GetHighRangeForHeight(@Model.Height)</li>
+            @if (@Model.BMI > 25)
+            {
+                <li>You need to lose @BMIController.HowMuchToLose(@Model)Kg to reach BMI of 25kg/m&sup2;</li>
+            }
+            else if(@Model.BMI < 18.5)
+            {
+                <li>You need to gain @BMIController.HowMuchToGain(@Model)Kg to reach BMI of 18km/m&sup2;</li>   
+            }
+         </ul>
+     </div>
+    <div class="bmi_table">
+        <table>
+            <thead>
+                <tr>
+                    <td>Category</td>
+                    <td>BMI range - kg/m2</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tdeb">Severe Thinness</td>
+                    <td class="tdeb">&lt 16</td>
+                </tr>
+                <tr>
+                    <td class="tdb">Moderate Thinness</td>
+                    <td class="tdb">16 - 17</td>
+                </tr>
+                <tr>
+                    <td class="tdg">Mild Thinness</td>
+                    <td class="tdg">17 - 18.5</td>
+                </tr>
+                <tr>
+                    <td class="tdvg">Normal</td>
+                    <td class="tdvg">18.5 - 25</td>
+                </tr>
+                <tr>
+                    <td class="tdg">Overweight</td>
+                    <td class="tdg">25 - 30</td>
+                </tr>
+                <tr>
+                    <td class="tdb">Obese Class I</td>
+                    <td class="tdb">30 - 35</td>
+                </tr>
+                <tr>
+                    <td class="tdeb">Obese Class II</td>
+                    <td class="tdeb">35 - 40</td>
+                </tr>
+                <tr>
+                    <td class="tdeb">Obese Class III</td>
+                    <td class="tdeb">&gt 40</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    }
+</div>
+<div class="aboutBMI">
+    <p>The Body Mass Index (BMI) Calculator can be used to calculate BMI value and corresponding weight status while taking age into consideration. Use the "Metric Units" tab for the International System of Units or the "Other Units" tab to convert units into either US or metric units. Note that the calculator also computes the Ponderal Index in addition to BMI, both of which are discussed below in detail.</p>
+
+    <h3>BMI introduction</h3>
+    <p>BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height. Specifically, the value obtained from the calculation of BMI is used to categorize whether a person is underweight, normal weight, overweight, or obese depending on what range the value falls between. These ranges of BMI vary based on factors such as region and age, and are sometimes further divided into subcategories such as severely underweight or very severely obese. Being overweight or underweight can have significant health effects, so while BMI is an imperfect measure of healthy body weight, it is a useful indicator of whether any additional testing or action is required. Refer to the table below to see the different categories based on BMI that are used by the calculator.</p>
+
+
+    <h3>BMI chart for adults</h3>
+    <p>This is a graph of BMI categories based on the World Health Organization data. The dashed lines represent subdivisions within a major categorization.</p>
+    <img src="~/img/bmi-chart.gif" />
+
+    <h3>Risks associated with being overweight</h3>
+    <p>Being overweight increases the risk of a number of serious diseases and health conditions. Below is a list of said risks, according to the Centers for Disease Control and Prevention (CDC):</p>
+    <ul>
+        <li>High blood pressure</li>
+        <li>Higher levels of LDL cholesterol, which is widely considered "bad cholesterol," lower levels of HDL cholesterol, considered to be good cholesterol in moderation, and high levels of triglycerides</li>
+        <li>Type II diabetes</li>
+        <li>Coronary heart disease</li>
+        <li>Stroke</li>
+        <li>Gallbladder disease</li>
+        <li>Osteoarthritis, a type of joint disease caused by breakdown of joint cartilage</li>
+        <li>Sleep apnea and breathing problems</li>
+        <li>Certain cancers (endometrial, breast, colon, kidney, gallbladder, liver)</li>
+        <li>Low quality of life</li>
+        <li>Mental illnesses such as clinical depression, anxiety, and others</li>
+        <li>Body pains and difficulty with certain physical functions</li>
+        <li>Generally, an increased risk of mortality compared to those with a healthy BMI</li>
+    </ul>
+    <p>As can be seen from the list above, there are numerous negative, in some cases fatal, outcomes that may result from being overweight. Generally, a person should try to maintain a BMI below 25 kg/m2, but ideally should consult their doctor to determine whether or not they need to make any changes to their lifestyle in order to be healthier.</p>
+
+    <h3>Risks associated with being underweight</h3>
+    <p>Being underweight has its own associated risks, listed below:</p>
+    <ul>
+        <li>Malnutrition, vitamin deficiencies, anemia (lowered ability to carry blood vessels)</li>
+        <li>Osteoporosis, a disease that causes bone weakness, increasing the risk of breaking a bone</li>
+        <li>A decrease in immune function</li>
+        <li>Growth and development issues, particularly in children and teenagers</li>
+        <li>Possible reproductive issues for women due to hormonal imbalances that can disrupt the menstrual cycle. Underweight women also have a higher chance of miscarriage in the first trimester</li>
+        <li>Potential complications as a result of surgery</li>
+        <li>Generally, an increased risk of mortality compared to those with a healthy BMI</li>
+    </ul>
+    <p>In some cases, being underweight can be a sign of some underlying condition or disease such as anorexia nervosa, which has its own risks. Consult your doctor if you think you or someone you know is underweight, particularly if the reason for being underweight does not seem obvious.</p>
+
+    <h3>Limitations of BMI</h3>
+    <p>Although BMI is a widely used and useful indicator of healthy body weight, it does have its limitations. BMI is only an estimate that cannot take body composition into account. Due to a wide variety of body types as well as distribution of muscle, bone mass, and fat, BMI should be considered along with other measurements rather than being used as the sole method for determining a person's healthy body weight.</p>
+    <p><b>In adults:</b></p>
+    <p>BMI cannot be fully accurate because it is a measure of excess body weight, rather than excess body fat. BMI is further influenced by factors such as age, sex, ethnicity, muscle mass, and body fat, and activity level, among others. For example, an older person who is considered a healthy weight, but is completely inactive in their daily life may have significant amounts of excess body fat even though they are not heavy. This would be considered unhealthy, while a younger person with higher muscle composition of the same BMI would be considered healthy. In athletes, particularly bodybuilders who would be considered overweight due to muscle being heavier than fat, it is entirely possible that they are actually at a healthy weight for their body composition. Generally, according to the CDC:</p>
+    <ul>
+        <li>Older adults tend to have more body fat than younger adults with the same BMI.</li>
+        <li>Women tend to have more body fat than men for an equivalent BMI.</li>
+        <li>Muscular individuals and highly trained athletes may have higher BMIs due to large muscle mass.</li>
+    </ul>
+    <h3><b>In children and adolescents:</b></h3>
+    <p>The same factors that limit the efficacy of BMI for adults can also apply to children and adolescents. Additionally, height and level of sexual maturation can influence BMI and body fat among children. BMI is a better indicator of excess body fat for obese children than it is for overweight children, whose BMI could be a result of increased levels of either fat or fat-free mass (all body components except for fat, which includes water, organs, muscle, etc.). In thin children, the difference in BMI can also be due to fat-free mass.That being said, BMI is fairly indicative of body fat for 90-95% of the population, and can effectively be used along with other measures to help determine an individual's healthy body weight.</p>
+</div>

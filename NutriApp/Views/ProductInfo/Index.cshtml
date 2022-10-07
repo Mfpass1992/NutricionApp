@@ -4,10 +4,13 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model List<ProductSelectionItem>
 @{
+    List<ProductSelectionItem> products = (List<ProductSelectionItem>) ViewData["ProductSelectionList"];
+    var count = products.Count();
 
 }
 <head>
     <link rel="stylesheet" href="~/css/productInfo.css" asp-append-version="true" />
+
 </head>
 
 <div>
@@ -21,7 +24,7 @@
               <button type="submit">Search</button>
           </form>
         </div>
-        @if (ViewData["ProductSelectionList"] != null)
+        @if (count > 0)
         {
             <div class="resultContainer">
                 <ul>
@@ -98,10 +101,10 @@ function capitalizeFirstLetter(string) {
 };
    
 var assetStatusEnum = @(Html.EnumToString<Units>());
-    console.log(assetStatusEnum);
 
-    $(".selectionItems").click(function() {
-        CallController((this));
+
+$(".selectionItems").click(function() {
+    CallController((this));
 });
 
 function CallController(el) {

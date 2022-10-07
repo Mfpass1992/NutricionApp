@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TL3WBCrHdarKl9LOJY51YLWNLb3P4JDsVCipw6zc0dw=",
+  "Hash": "PLDpMBwEy/W8kjBLe4MPEmuSz55j+PyhFe8Tt3oK5Y0=",
   "Source": "NutriApp",
   "BasePath": "_content/NutriApp",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\css\\BMI.css",
+      "SourceId": "NutriApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\",
+      "BasePath": "_content/NutriApp",
+      "RelativePath": "css/BMI.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\BMI.css"
+    },
     {
       "Identity": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\css\\productInfo.css",
       "SourceId": "NutriApp",
@@ -66,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\img\\bmi-chart.gif",
+      "SourceId": "NutriApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\",
+      "BasePath": "_content/NutriApp",
+      "RelativePath": "img/bmi-chart.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\bmi-chart.gif"
     },
     {
       "Identity": "D:\\git\\NutriApp\\NutriApp\\wwwroot\\img\\logo.png",
