@@ -122,13 +122,14 @@ function CallController(el) {
             console.log("erro");
         },
         complete: function (data) {
+            console.log(data);
             var response = data.responseJSON;
             clearTable();
             $(".nutrient_th").append("Nutrient");
             $(".percentDaily_th").append("Percent of daily recommended intake");
             $(".weight_th").append(response.amount + getUnit(response.unit));
-            for (var el in response.nutrition) {
-                var nutri = response.nutrition[el];
+            for (var el in response.basicNutrients) {
+                var nutri = response.basicNutrients[el];
                 $("#table_body").append("<tr>");
                 $("#table_body").append("<td class=nutri-label>" + nutri.name + "</td>");
                 $("#table_body").append("<td>" + nutri.amount + getUnit(nutri.unit) + "</td>");
